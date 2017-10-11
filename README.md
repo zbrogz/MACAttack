@@ -8,6 +8,12 @@ For example, if MAC is created by taking the SHA-1 hash of a secret key concaten
 Limitations:
 - The message must be a multiple of 8 bits (easy with text files)
 - The original mac must be generated from SHA-1 with the message appended to the key (key first).
+- The new message will have padding inside (0x1000...), although this is usually not rendered by text viewers.
+
+### Example
+Alice sends Bob "You are the best" with a MAC generated from a secret key and message.
+Mallory can modify the message to read "You are the best at being a terrible person" and generate a new mac without knowing the secret key.
+When Bob receives the message, he will verify the integrity by generating the mac with the spoofed message and the secret key, and it will be the same as the MAC Mallory sent.
 
 # Usage
 ### macExtensionMessage(original_message, key_size, new_message);
