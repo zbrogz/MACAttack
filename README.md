@@ -7,7 +7,8 @@ For example, if MAC is created by taking the SHA-1 hash of a secret key concaten
 
 Limitations:
 - The message must be a multiple of 8 bits (easy with text files)
-- The original mac must be generated from SHA-1 with the message appended to the key (key first).
+- The original mac must be generated from SHA-1 with the message appended to the key (key first). H(K || m)
+- The key size must be known
 - The new message will have padding inside (0x1000...), although this is usually not rendered by text viewers.
 
 ### Example
